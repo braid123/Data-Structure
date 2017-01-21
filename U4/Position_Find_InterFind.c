@@ -9,7 +9,7 @@ Position Find(ElementType X,BinTree BST)//Î²µİ¹é
 	else
 		return BST; 
 } 
-Position IterFind(ElementType X,BinTree BST)//Î²µİ¹é
+Position IterFind(ElementType X,BinTree BST)//µü´ú 
 {
 	while(BST){
 		if(X>BST->Data)
