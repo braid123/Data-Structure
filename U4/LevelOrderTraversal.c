@@ -2,7 +2,7 @@ void LevelOrderTraversal(BinTree BT)
 {
 	Queue Q; 
 	BinTree T; 
-	if(!BT)//若为空速，直接返回 
+	if(!BT)//若为空树，直接返回 
 		return ;
 	Q=CreatQueue(Maxsize);//初始化队列 
 	AddQ(Q,BT);
@@ -15,3 +15,22 @@ void LevelOrderTraversal(BinTree BT)
 			AddQ(Q,T->Right);
 	} 
 }
+void PreOrderPrintLeaves(BinTree BT)//输出二叉树中的叶节点 
+{
+	if(!BT->Left && !BT->Right)
+		printf("%d",BT->Data);
+	PreOrderPrintLeaves(BT->Left);
+	PreOrderPrintLeaves(BT->Right);
+}
+int PostOrderGetHeight(BinTree BT)//树的深度=左右子树最大值+1 
+{
+	int HL,HR,MaxH;
+	if(BT){
+		HL=PostOrderGetHeight(BT->Left);
+		HR=PostOrderGetHeight(BT->Right);
+		MaxH=HL>HR?HL:HR;
+		return(MaxH+1);
+	}
+	else 
+		return 0; 
+} 
