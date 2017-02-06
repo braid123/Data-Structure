@@ -58,3 +58,30 @@ void Insert(ElementType Key,HashTable H)
 		H->TheCells.Element=Key;
 	}
 }
+
+typedef struct HashTbl2 *HashTable;
+struct HashTbl2{
+	int TableSize;
+	List TheLists;	
+}H;
+struct ListNode;
+typedef struct ListNode *Position,*List;
+struct HashTbl2;
+typedef struct HashTbl2 *HashTable;
+struct ListNode
+{
+	ElementType Element;
+	Position Next; 
+};
+
+Position Find(ElementType Key,HashTable H) 
+{
+	Position P;
+	List L;
+	L=&(H->TheLists[Hash(Key,H->TableSize)]);
+	P=L->Next;
+	while(P!=NULL&&strcmp(P->Element,Key))
+		P=P->Next;
+	return P;
+}
+
